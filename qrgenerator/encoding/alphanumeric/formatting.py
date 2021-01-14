@@ -1,3 +1,4 @@
+TERMINATOR = '0000'
 mode_indicator = "0010"
 character_count = dict(
     [(n, 9) for n in range(1, 10)] +
