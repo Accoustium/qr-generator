@@ -6,6 +6,7 @@ class Numeric:
         self.number = number
         self.character_length = len(str(number))
         self.error_correction = correction
+
         if version is None:
             self.version = self._find_version()
         else:
