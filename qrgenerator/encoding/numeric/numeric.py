@@ -31,6 +31,7 @@ class Numeric:
         return f"Numeric({self.number}, {self.error_correction})"
 
     def _encode(self):
+        # TODO - fix encoding to handle one and two zeros in grouping of three numbers.
         encoding = [
             str(self.number)[_:_+3]
             for _ in range(0, self.character_length + 1, 3)
