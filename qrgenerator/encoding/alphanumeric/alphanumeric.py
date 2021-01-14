@@ -13,7 +13,7 @@ class Alphanumeric:
             if self._validate_version(version):
                 self.version = version
             else:
-                raise ValueError('Version is to low to accommodate size of number.')
+                raise ValueError('Version is to low to accommodate size of string.')
 
         self.encoded_string = ''.join([
             formatting.mode_indicator,
