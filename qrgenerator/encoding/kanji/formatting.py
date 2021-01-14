@@ -1,3 +1,7 @@
+__all__ = ['terminator', 'mode_indicator', 'character_count', 'capacities']
+
+
+terminator = '0000'
 mode_indicator = "1000"
 character_count = dict(
     [(n, 8) for n in range(1, 10)] +
