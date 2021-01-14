@@ -36,7 +36,10 @@ class Byte:
             for _ in self.decoded_string
         ]
 
-        return ''.join(map(lambda x: bin(int(x, 16))[2:].zfill(8), encoding))
+        encoded_word = ''.join(map(lambda x: bin(int(x, 16))[2:].zfill(8), encoding))
+        encoded_word = encoded_word + '0' * (7 - (len(str(encoded_word)) % 8))
+
+        return encoded_word
 
     def _find_version(self) -> int:
         for k, v in formatting.capacities.items():

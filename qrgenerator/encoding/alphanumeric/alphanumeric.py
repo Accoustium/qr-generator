@@ -50,7 +50,10 @@ class Alphanumeric:
                     )[2:].zfill(6)
                 )
 
-        return ''.join(encoding)
+        encoded_word = ''.join(encoding)
+        encoded_word = encoded_word + '0' * (7 - (len(str(encoded_word)) % 8))
+
+        return encoded_word
 
     def _find_version(self) -> int:
         for k, v in formatting.capacities.items():

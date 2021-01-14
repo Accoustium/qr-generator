@@ -37,10 +37,10 @@ class Numeric:
             for _ in range(0, self.character_length + 1, 3)
         ]
 
-        return ''.join(list(map(
-            lambda x: bin(int(x))[2:],
-            encoding
-        )))
+        encoded_word = ''.join(list(map(lambda x: bin(int(x))[2:], encoding)))
+        encoded_word = encoded_word + '0' * (7 - (len(str(encoded_word)) % 8))
+
+        return encoded_word
 
     def _find_version(self) -> int:
         for k, v in formatting.capacities.items():
