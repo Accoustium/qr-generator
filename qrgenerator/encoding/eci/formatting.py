@@ -1,4 +1,4 @@
-__all__ = ['terminator', 'mode_indicator', 'character_count', 'capacities']
+__all__ = ['terminator', 'mode_indicator']
 
 
 terminator = '0000'
