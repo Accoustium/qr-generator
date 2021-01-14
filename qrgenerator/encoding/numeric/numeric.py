@@ -18,14 +18,14 @@ class Numeric:
         self.encoded_number = ''.join([
             formatting.mode_indicator,
             bin(self.character_length)[2:].zfill(
-                formatting.character_count[self.character_length]
+                formatting.character_count[self.version]
             ),
             self._encode(),
             formatting.terminator
         ])
 
     def __str__(self):
-        return f"Numeric({self.number}, {self.error_correction})"
+        return self.encoded_number
 
     def __repr__(self):
         return f"Numeric({self.number}, {self.error_correction})"
