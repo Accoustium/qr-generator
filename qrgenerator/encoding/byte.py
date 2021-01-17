@@ -1,17 +1,17 @@
-import encoding
-import formatting.byte
+from .encoding import Encoding
+from .formatting import byte
 
 
-class Byte(encoding.Encoding):
+class Byte(Encoding):
     def __init__(self, decoded_string: str, correction: str, version: int = None):
         super().__init__(
             decoded_string,
             correction,
             version,
-            formatting.byte.mode_indicator,
-            formatting.byte.capacities,
-            formatting.byte.character_count,
-            formatting.byte.terminator
+            byte.mode_indicator,
+            byte.capacities,
+            byte.character_count,
+            byte.terminator
         )
 
     def __repr__(self):

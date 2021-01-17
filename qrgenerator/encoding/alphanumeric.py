@@ -1,17 +1,17 @@
-import encoding
-import formatting.alphanumeric
+from .encoding import Encoding
+from .formatting import alphanumeric
 
 
-class Alphanumeric(encoding.Encoding):
+class Alphanumeric(Encoding):
     def __init__(self, decoded_string: str, correction: str, version: int = None):
         super().__init__(
             decoded_string,
             correction,
             version,
-            formatting.alphanumeric.mode_indicator,
-            formatting.alphanumeric.capacities,
-            formatting.alphanumeric.character_count,
-            formatting.alphanumeric.terminator
+            alphanumeric.mode_indicator,
+            alphanumeric.capacities,
+            alphanumeric.character_count,
+            alphanumeric.terminator
         )
 
     def __repr__(self):
@@ -23,9 +23,9 @@ class Alphanumeric(encoding.Encoding):
             try:
                 encoding.append(
                     bin(
-                        (45 * formatting.alphanumeric.alpha_values[
+                        (45 * alphanumeric.alpha_values[
                             self.decoded_string[_]
-                        ]) + formatting.alphanumeric.alpha_values[
+                        ]) + alphanumeric.alpha_values[
                             self.decoded_string[_ + 1]
                         ]
                     )[2:].zfill(11)
@@ -33,7 +33,7 @@ class Alphanumeric(encoding.Encoding):
             except IndexError:
                 encoding.append(
                     bin(
-                        formatting.alphanumeric.alpha_values[self.decoded_string[_]]
+                        alphanumeric.alpha_values[self.decoded_string[_]]
                     )[2:].zfill(6)
                 )
 

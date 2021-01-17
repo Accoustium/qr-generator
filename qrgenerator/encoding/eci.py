@@ -1,8 +1,7 @@
-import encoding
-import formatting.eci
+from .encoding import Encoding
+from .formatting import eci
 
-
-class ECI(encoding.Encoding):
+class ECI(Encoding):
     def __init__(self, decoded_string: str, correction: str, version: int = None):
         super().__init__(
             decoded_string,

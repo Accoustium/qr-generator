@@ -1,6 +1,5 @@
-from encoding import Encoding
-import formatting.numeric
-
+from .encoding import Encoding
+from .formatting import numeric
 
 class Numeric(Encoding):
     def __init__(self, number: int, correction: str, version: int = None):
@@ -8,10 +7,10 @@ class Numeric(Encoding):
             str(number),
             correction,
             version,
-            formatting.numeric.mode_indicator,
-            formatting.numeric.capacities,
-            formatting.numeric.character_count,
-            formatting.numeric.terminator
+            numeric.mode_indicator,
+            numeric.capacities,
+            numeric.character_count,
+            numeric.terminator
         )
 
     def __repr__(self):

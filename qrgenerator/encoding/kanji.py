@@ -1,17 +1,16 @@
-import encoding
-import formatting.kanji
+from .encoding import Encoding
+from .formatting import kanji
 
-
-class Kanji(encoding.Encoding):
+class Kanji(Encoding):
     def __init__(self, decoded_string: str, correction: str, version: int = None):
         super().__init__(
             decoded_string,
             correction,
             version,
-            formatting.kanji.mode_indicator,
-            formatting.kanji.capacities,
-            formatting.kanji.character_count,
-            formatting.kanji.terminator
+            kanji.mode_indicator,
+            kanji.capacities,
+            kanji.character_count,
+            kanji.terminator
         )
 
     def __repr__(self):
