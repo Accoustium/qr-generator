@@ -1,4 +1,8 @@
+import os
+import sys
 import pytest
+dir_path = os.path.dirname(__file__)
+sys.path.append(os.path.join(dir_path, '..'))
 from qrgenerator.encoding.alphanumeric import Alphanumeric
 
 
@@ -12,7 +16,7 @@ def test_alpha_mode(alpha_fixture):
 
 
 def test_alpha_character_count(alpha_fixture):
-    assert alpha_fixture.character_count == '000001011'
+    assert alpha_fixture.encoded_character_count() == '000001011'
 
 
 def test_alpha_word_encoding(alpha_fixture):
