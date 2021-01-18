@@ -1,4 +1,4 @@
-import formatting
+from .formatting
 
 
 class ErrorCorrection:
