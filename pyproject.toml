@@ -2,7 +2,6 @@
 addopts = "-vvv"
 python_files = ['test_*.py']
 testpaths = ['tests']
-xfail_string = true
 
 [tool.black]
 target-version = ['py36']
