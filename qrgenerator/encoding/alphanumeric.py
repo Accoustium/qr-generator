@@ -11,7 +11,7 @@ class Alphanumeric(Encoding):
             alphanumeric.mode_indicator,
             alphanumeric.capacities,
             alphanumeric.character_count,
-            alphanumeric.terminator
+            alphanumeric.terminator,
         )
 
     def __repr__(self):
@@ -23,21 +23,16 @@ class Alphanumeric(Encoding):
             try:
                 encoding.append(
                     bin(
-                        (45 * alphanumeric.alpha_values[
-                            self.decoded_string[_]
-                        ]) + alphanumeric.alpha_values[
-                            self.decoded_string[_ + 1]
-                        ]
+                        (45 * alphanumeric.alpha_values[self.decoded_string[_]])
+                        + alphanumeric.alpha_values[self.decoded_string[_ + 1]]
                     )[2:].zfill(11)
                 )
             except IndexError:
                 encoding.append(
-                    bin(
-                        alphanumeric.alpha_values[self.decoded_string[_]]
-                    )[2:].zfill(6)
+                    bin(alphanumeric.alpha_values[self.decoded_string[_]])[2:].zfill(6)
                 )
 
-        encoded_word = ''.join(encoding)
-        encoded_word = encoded_word + '0' * (7 - (len(str(encoded_word)) % 8))
+        encoded_word = "".join(encoding)
+        encoded_word = encoded_word
 
         return encoded_word

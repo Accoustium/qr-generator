@@ -1,0 +1,19 @@
+[tool.pytest.ini_options]
+addopts = "-vvv"
+python_files = ['test_*.py']
+testpaths = ['tests']
+
+[tool.black]
+target-version = ['py36']
+include = '\.pyi?$'
+exclude = '''
+
+(
+    /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.venv
+    )/
+    |
+)
+'''

@@ -1,12 +1,12 @@
-__all__ = ['terminator', 'mode_indicator', 'character_count', 'capacities']
+__all__ = ["terminator", "mode_indicator", "character_count", "capacities"]
 
 
-terminator = '0000'
+terminator = "0000"
 mode_indicator = "0100"
 character_count = dict(
-    [(n, 8) for n in range(1, 10)] +
-    [(n, 16) for n in range(10, 27)] +
-    [(n, 16) for n in range(27, 41)]
+    [(n, 8) for n in range(1, 10)]
+    + [(n, 16) for n in range(10, 27)]
+    + [(n, 16) for n in range(27, 41)]
 )
 capacities = {
     1: {"L": 17, "M": 14, "Q": 11, "H": 7},
@@ -48,5 +48,5 @@ capacities = {
     37: {"L": 2563, "M": 1989, "Q": 1423, "H": 1093},
     38: {"L": 2699, "M": 2099, "Q": 1499, "H": 1139},
     39: {"L": 2809, "M": 2213, "Q": 1579, "H": 1219},
-    40: {"L": 2953, "M": 2331, "Q": 1663, "H": 1273}
+    40: {"L": 2953, "M": 2331, "Q": 1663, "H": 1273},
 }

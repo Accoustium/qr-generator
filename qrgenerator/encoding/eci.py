@@ -1,6 +1,7 @@
 from .encoding import Encoding
 from .formatting import eci
 
+
 class ECI(Encoding):
     def __init__(self, decoded_string: str, correction: str, version: int = None):
         super().__init__(
@@ -10,7 +11,7 @@ class ECI(Encoding):
             formatting.eci.mode_indicator,
             formatting.eci.character_count,
             formatting.eci.capacities,
-            formatting.eci.terminator
+            formatting.eci.terminator,
         )
 
     def __repr__(self):
