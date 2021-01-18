@@ -30,7 +30,7 @@ class Encoding:
             self.version = self.find_version()
 
     def __str__(self):
-        return "".join(
+        encoding = "".join(
             [
                 self.mode_indicator,
                 self.encoded_character_count(),
@@ -38,6 +38,8 @@ class Encoding:
                 self.terminator,
             ]
         )
+
+        return encoding + "0" * (8 - (len(str(encoding)) % 8))
 
     def __repr__(self):
         return f"Encoding(string={self.decoded_string}, correction={self.error_correction})"

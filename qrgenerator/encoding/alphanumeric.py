@@ -33,6 +33,6 @@ class Alphanumeric(Encoding):
                 )
 
         encoded_word = "".join(encoding)
-        encoded_word = encoded_word + "0" * (7 - (len(str(encoded_word)) % 8))
+        encoded_word = encoded_word
 
         return encoded_word
