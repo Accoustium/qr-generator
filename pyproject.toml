@@ -1,5 +1,5 @@
 [tool.pytest.ini_options]
-addopts = "-vvv -p qrgenerator"
+addopts = "-vvv"
 python_files = ['test_*.py']
 testpaths = ['tests']
 xfail_string = true
