@@ -1,11 +1,11 @@
-__all__ = ['mode_indicator', 'character_count', 'capacities', 'terminator']
+__all__ = ["mode_indicator", "character_count", "capacities", "terminator"]
 
-terminator = '0000'
+terminator = "0000"
 mode_indicator = "0001"
 character_count = dict(
-    [(n, 10) for n in range(1, 10)] +
-    [(n, 12) for n in range(10, 27)] +
-    [(n, 14) for n in range(27, 41)]
+    [(n, 10) for n in range(1, 10)]
+    + [(n, 12) for n in range(10, 27)]
+    + [(n, 14) for n in range(27, 41)]
 )
 capacities = {
     1: {"L": 41, "M": 34, "Q": 27, "H": 17},

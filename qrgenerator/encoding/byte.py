@@ -11,19 +11,16 @@ class Byte(Encoding):
             byte.mode_indicator,
             byte.capacities,
             byte.character_count,
-            byte.terminator
+            byte.terminator,
         )
 
     def __repr__(self):
         return f"Byte(string={self.decoded_string}, error_correction={self.error_correction})"
 
     def encode(self):
-        encoding = [
-            _.encode('utf-8').hex()
-            for _ in self.decoded_string
-        ]
+        encoding = [_.encode("utf-8").hex() for _ in self.decoded_string]
 
-        encoded_word = ''.join(map(lambda x: bin(int(x, 16))[2:].zfill(8), encoding))
-        encoded_word = encoded_word + '0' * (7 - (len(str(encoded_word)) % 8))
+        encoded_word = "".join(map(lambda x: bin(int(x, 16))[2:].zfill(8), encoding))
+        encoded_word = encoded_word + "0" * (7 - (len(str(encoded_word)) % 8))
 
         return encoded_word
