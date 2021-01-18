@@ -1,0 +1,20 @@
+[tool.pytest.ini_options]
+addopts = "-vvv -p qrgenerator"
+python_files = ['test_*.py']
+testpaths = ['tests']
+xfail_string = true
+
+[tool.black]
+target-version = ['py36']
+include = '\.pyi?$'
+exclude = '''
+
+(
+    /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.venv
+    )/
+    |
+)
+'''
