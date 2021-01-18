@@ -1,4 +1,4 @@
-from .formatting
+from .formatting import correction
 
 
 class ErrorCorrection:
@@ -9,7 +9,7 @@ class ErrorCorrection:
     def _find_required_bits_number(
         self, correction_level: str, version_number: int
     ) -> int:
-        numbers = formatting.correction_table[f"{version_number}-{correction_level}"]
+        numbers = correction.correction_table[f"{version_number}-{correction_level}"]
 
         group_1_block = int(numbers[1])
         group_1_codeword = int(numbers[2])
@@ -23,5 +23,5 @@ class ErrorCorrection:
             return encoded_string
 
         padding_bits = (self.required_bits - len(encoded_string)) / 2 + 1
-        padded_string = "".join([encoded_string, formatting.filler * padding_bits])
+        padded_string = "".join([encoded_string, correction.filler * padding_bits])
         return padded_string[: self.required_bits]
