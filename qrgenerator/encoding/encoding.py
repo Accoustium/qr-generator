@@ -39,7 +39,11 @@ class Encoding:
             ]
         )
 
-        return encoding + "0" * (8 - (len(str(encoding)) % 8))
+        return (
+            encoding + "0" * (8 - (len(str(encoding)) % 8))
+            if len(str(encoding)) % 8 != 0
+            else encoding
+        )
 
     def __repr__(self):
         return f"Encoding(string={self.decoded_string}, correction={self.error_correction})"

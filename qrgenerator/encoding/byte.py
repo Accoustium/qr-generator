@@ -21,6 +21,5 @@ class Byte(Encoding):
         encoding = [_.encode("utf-8").hex() for _ in self.decoded_string]
 
         encoded_word = "".join(map(lambda x: bin(int(x, 16))[2:].zfill(8), encoding))
-        encoded_word = encoded_word + "0" * (7 - (len(str(encoded_word)) % 8))
 
         return encoded_word

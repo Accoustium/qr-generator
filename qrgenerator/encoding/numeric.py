@@ -24,7 +24,6 @@ class Numeric(Encoding):
         ]
 
         encoded_word = "".join(list(map(self.encoding_number, encoding)))
-        encoded_word = encoded_word + "0" * (7 - (len(str(encoded_word)) % 8))
 
         return encoded_word
 
