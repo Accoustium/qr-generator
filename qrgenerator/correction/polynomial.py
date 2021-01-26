@@ -11,9 +11,17 @@ class Term:
         self.coefficient = coefficient
         self.exponent = exponent
 
+    def __repr__(self):
+        return f"Term({self.coefficient}, {self.exponent})"
+
     def __str__(self):
         superscript = str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")
-        return f"{self.coefficient}{self.variable}{str(self.exponent).translate(superscript)}"
+        coe = self.coefficient if self.coefficient != 1 else ''
+
+        var = self.variable if self.exponent != 0 else ''
+        exp = self.exponent if self.exponent != 0 else ''
+
+        return f"{coe}{var}{str(exp).translate(superscript)}"
 
     @classmethod
     def create_from_str(cls, single_term: str):
@@ -23,7 +31,7 @@ class Term:
 
         return Term(
             (int(terms[0]) if terms[0] != '' else 1),
-            (int(terms[2].translate(superscript)))
+            (int(terms[2].translate(superscript)) if terms[2] != '' else 0)
         )
 
 
@@ -57,6 +65,8 @@ class Message(Polynomial):
 
 
 class Generator(Polynomial):
+    generator_from_words = {2: [Term(1, 2), Term(3, 1), Term(2, 0)]}
+
     def __init__(self, code_words: int):
         super().__init__()
 
