@@ -27,6 +27,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Template cleanup"
+
       # Push changes
       - name: Push changes
         uses: ad-m/github-push-action@master
