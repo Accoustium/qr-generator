@@ -1,4 +1,4 @@
-imoprt re
+import re
 from .galois import Galois
 
 
