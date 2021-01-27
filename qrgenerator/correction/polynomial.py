@@ -1,4 +1,3 @@
-import re
 from .galois import Galois
 from .term import Term
 
