@@ -11,7 +11,8 @@ class Galois:
             value ^= 285
 
         self.exponent.update({start: value})
-        self.integer.update({value: start})
+        if value not in self.integer.keys():
+            self.integer.update({value: start})
 
         if start == end:
             return 0
@@ -22,10 +23,10 @@ class Galois:
         if 0 > value or value > 255:
             raise ValueError("Value needs to be within 0 and 255.")
 
-        return self.exponent.get(value)
+        return self.integer.get(value)
 
     def find_integer(self, value: int):
         if 0 > value or value > 255:
             raise ValueError("Value needs to be within 0 and 255.")
 
-        return self.integer.get(value)
+        return self.exponent.get(value)
