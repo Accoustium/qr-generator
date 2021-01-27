@@ -86,7 +86,7 @@ class Generator(Polynomial):
             x = Polynomial()
             y = Polynomial()
             x.equation = self.generator_from_words[num - 1]
-            y.equation = [Term(1, 1), Term(GF.find_integer(num), 0)]
+            y.equation = [Term(1, 1), Term(GF.find_integer(num - 1), 0)]
             z = x * y
             self.generator_from_words.update({num: z.equation})
 
