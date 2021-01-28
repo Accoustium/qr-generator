@@ -63,7 +63,6 @@ class Polynomial:
             for eq2 in equation_2:
                 mult_eq.append(eq1 * eq2)
 
-        # TODO - Consolidate equation
         new_eq = list()
         for _ in range(mult_eq[0].exponent, -1, -1):
             coefficient = list(map(
