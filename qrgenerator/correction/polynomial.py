@@ -7,25 +7,36 @@ GF = Galois()
 
 class Polynomial:
     def __init__(self):
-        self.equation = list()
+        self.equation: list[Term] = list()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Polynomial({' + '.join(map(str, self.equation))})"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return " + ".join(map(str, self.equation))
 
-    def __mul__(self, other):
+    def __mul__(self, other) -> Polynomial:
         if isinstance(other, Polynomial):
             new_poly = Polynomial()
             new_poly.equation = self.__multiply_equations(self.equation, other.equation)
             return new_poly
 
-    def __truediv__(self, other):
+    def __truediv__(self, other) -> Polynomial:
         if isinstance(other, Polynomial):
-            pass
+            first_poly = Polynomial()
+            first_poly.equation = [Term(1, self.equation[0].exponent)]
+            second_poly = Polynomial()
+            second_poly.equation = [Term(1, other.equation[0].exponent)]
+            first_poly, second_poly = self * second_poly, other * first_poly
+            new_poly = Polynomial()
+            new_poly.equation = self.__divide_equations(first_poly.equation, second_poly.equation)
 
-    def __multiply_equations(self, equation_1: list, equation_2: list) -> list:
+            return new_poly
+
+    def __divide_equations(self, equation_1: list[Term], equation_2: list[Term]) -> list[Term]:
+        pass
+
+    def __multiply_equations(self, equation_1: list[Term], equation_2: list[Term]) -> list[Term]:
         mult_eq = list()
         for eq1 in equation_1:
             for eq2 in equation_2:
@@ -57,10 +68,10 @@ class Message(Polynomial):
         super().__init__()
         self.equation = self.create_message_polynomial(encoded_string)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"PloyMessage({self})"
 
-    def create_message_polynomial(self, string: str):
+    def create_message_polynomial(self, string: str) -> list[Term]:
         equation = []
         split_string = [string[x:x+8] for x in range(0, len(string), 8)]
         poly_length = len(split_string)
@@ -77,10 +88,10 @@ class Generator(Polynomial):
         super().__init__()
         self.equation = self.create_generator_polynomial(code_words)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"PolyGenerator({self})"
 
-    def create_generator_polynomial(self, words: int):
+    def create_generator_polynomial(self, words: int) -> list[Term]:
         if words in self.generator_from_words.keys():
             return self.generator_from_words[words]
 
