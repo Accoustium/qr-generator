@@ -39,6 +39,13 @@ class Term:
 
         return f"{coe}{var}{str(exp).translate(superscript)}"
 
+    def __truediv__(self, other):
+        if isinstance(other, Term):
+            if self.exponent != other.exponent:
+                raise ValueError("Exponents to do not match.")
+
+            return Term(self.coefficient ^ other.coefficient, self.exponent)
+
     def __mul__(self, other):
         if isinstance(other, Term):
             x1 = GF.find_exponent(self.coefficient)
