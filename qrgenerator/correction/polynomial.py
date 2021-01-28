@@ -15,26 +15,47 @@ class Polynomial:
     def __str__(self) -> str:
         return " + ".join(map(str, self.equation))
 
-    def __mul__(self, other) -> Polynomial:
+    def copy(self):
+        new = Polynomial()
+        new.equation = self.equation.copy()
+        return new
+
+    def __mul__(self, other):
         if isinstance(other, Polynomial):
             new_poly = Polynomial()
             new_poly.equation = self.__multiply_equations(self.equation, other.equation)
             return new_poly
 
-    def __truediv__(self, other) -> Polynomial:
+    def __truediv__(self, other):
         if isinstance(other, Polynomial):
-            first_poly = Polynomial()
-            first_poly.equation = [Term(1, self.equation[0].exponent)]
-            second_poly = Polynomial()
-            second_poly.equation = [Term(1, other.equation[0].exponent)]
-            first_poly, second_poly = self * second_poly, other * first_poly
-            new_poly = Polynomial()
-            new_poly.equation = self.__divide_equations(first_poly.equation, second_poly.equation)
+            mul_poly = Polynomial()
+            mul_poly.equation = [Term(1, other.equation[0].exponent)]
+            new_poly = self * mul_poly
+            gen_poly = other
+            while new_poly.equation[-1].exponent != 0:
+                new_poly = self.__divide_equations(new_poly, gen_poly)
 
             return new_poly
 
-    def __divide_equations(self, equation_1: list[Term], equation_2: list[Term]) -> list[Term]:
-        pass
+    def __divide_equations(self, poly_1, poly_2):
+        mul_poly = Polynomial()
+        mul_poly.equation = [
+            Term(poly_1.equation[0].coefficient, poly_1.equation[0].exponent - poly_2.equation[0].exponent)
+        ]
+        poly_2 = poly_2 * mul_poly
+        mul_poly.equation = list()
+        length = len(poly_1.equation) if len(poly_1.equation) > len(poly_2.equation) else len(poly_2.equation)
+        for _ in range(length):
+            try:
+                mul_poly.equation.append(poly_1.equation[_] / poly_2.equation[_])
+            except IndexError:
+                try:
+                    mul_poly.equation.append(poly_1.equation[_])
+                except IndexError:
+                    mul_poly.equation.append(poly_2.equation[_])
+
+        mul_poly.equation = mul_poly.equation[1:]
+        return mul_poly
 
     def __multiply_equations(self, equation_1: list[Term], equation_2: list[Term]) -> list[Term]:
         mult_eq = list()
