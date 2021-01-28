@@ -41,11 +41,13 @@ class Polynomial:
 
             try:
                 coefficient = coefficient[0] ^ coefficient[1]
+                new_eq.append(Term(coefficient, _))
             except IndexError:
-                coefficient = coefficient[0]
-
-            # coefficient = coefficient if coefficient < 256 else coefficient % 255
-            new_eq.append(Term(coefficient, _))
+                try:
+                    coefficient = coefficient[0]
+                    new_eq.append(Term(coefficient, _))
+                except IndexError:
+                    pass
 
         return new_eq
 
