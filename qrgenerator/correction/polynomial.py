@@ -15,6 +15,10 @@ class Polynomial:
     def __str__(self) -> str:
         return " + ".join(map(str, self.equation))
 
+    def bin(self):
+        coefficients = list(map(lambda x: x.coefficient, self.equation))
+        return "".join(list(map(lambda x: bin(x)[2:].zfill(8), coefficients)))
+
     def copy(self):
         new = Polynomial()
         new.equation = self.equation.copy()
