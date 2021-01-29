@@ -6,13 +6,14 @@ class ErrorCorrection:
     def __init__(self, encoding: str, version: int, correction_level: str):
         self.required_bits = self.__find_required_bits_number(correction_level, version)
         self.padded_encoding = self.__pad_string(encoding)
+        self.blocks = list()
 
     def __find_required_bits_number(
         self, correction_level: str, version_number: int
     ) -> int:
         numbers = correction_table[f"{version_number}-{correction_level}"]
 
-        return (numbers.blocks_group_1 + numbers.dc_group_1) + (numbers.blocks_group_2 + numbers.dc_group_2)
+        return (numbers.blocks_group_1 * numbers.dc_group_1) + (numbers.blocks_group_2 * numbers.dc_group_2)
 
     def __pad_string(self, encoded_string: str) -> str:
         if len(encoded_string) == self.required_bits:
