@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Check out current repository
-      - name: Fetch Sources
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Black Clean-up
@@ -21,18 +21,14 @@ jobs:
         with:
           args: .
 
-      - name: Commit files
+      - name: Commit files if changed
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git diff
+          git config --global user.email "action@github.com"
+          git config --global user.name "Lint Clean Up"
           git add .
           git commit -m "Template cleanup"
-      # Push changes
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}     
+          git push
 
   build:
 
