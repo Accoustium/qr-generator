@@ -8,7 +8,7 @@ GF = Galois()
 class Term:
     coefficient: int
     exponent: int
-    variable: str = 'x'
+    variable: str = "x"
 
     def __init__(self, coefficient: int, exponent: int):
         self.coefficient = coefficient
@@ -23,16 +23,16 @@ class Term:
             if self.exponent == 0:
                 coe = self.coefficient
             else:
-                coe = ''
+                coe = ""
         else:
             coe = self.coefficient
 
         if self.exponent == 0:
-            var = ''
-            exp = ''
+            var = ""
+            exp = ""
         elif self.exponent == 1:
             var = self.variable
-            exp = ''
+            exp = ""
         else:
             var = self.variable
             exp = self.exponent
@@ -66,10 +66,10 @@ class Term:
     @classmethod
     def create_from_str(cls, single_term: str):
         superscript = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹", "0123456789")
-        groups = re.compile(r'(\d*)?([a-zA-Z])?(.*)?')
+        groups = re.compile(r"(\d*)?([a-zA-Z])?(.*)?")
         terms = groups.findall(single_term)[0]
 
         return Term(
-            (int(terms[0]) if terms[0] != '' else 1),
-            (int(terms[2].translate(superscript)) if terms[2] != '' else 0)
+            (int(terms[0]) if terms[0] != "" else 1),
+            (int(terms[2].translate(superscript)) if terms[2] != "" else 0),
         )

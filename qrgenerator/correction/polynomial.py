@@ -44,11 +44,18 @@ class Polynomial:
     def __divide_equations(self, poly_1, poly_2):
         mul_poly = Polynomial()
         mul_poly.equation = [
-            Term(poly_1.equation[0].coefficient, poly_1.equation[0].exponent - poly_2.equation[0].exponent)
+            Term(
+                poly_1.equation[0].coefficient,
+                poly_1.equation[0].exponent - poly_2.equation[0].exponent,
+            )
         ]
         poly_2 = poly_2 * mul_poly
         mul_poly.equation = list()
-        length = len(poly_1.equation) if len(poly_1.equation) > len(poly_2.equation) else len(poly_2.equation)
+        length = (
+            len(poly_1.equation)
+            if len(poly_1.equation) > len(poly_2.equation)
+            else len(poly_2.equation)
+        )
         for _ in range(length):
             try:
                 mul_poly.equation.append(poly_1.equation[_] / poly_2.equation[_])
@@ -61,7 +68,9 @@ class Polynomial:
         mul_poly.equation = mul_poly.equation[1:]
         return mul_poly
 
-    def __multiply_equations(self, equation_1: list[Term], equation_2: list[Term]) -> list[Term]:
+    def __multiply_equations(
+        self, equation_1: list[Term], equation_2: list[Term]
+    ) -> list[Term]:
         mult_eq = list()
         for eq1 in equation_1:
             for eq2 in equation_2:
@@ -69,10 +78,12 @@ class Polynomial:
 
         new_eq = list()
         for _ in range(mult_eq[0].exponent, -1, -1):
-            coefficient = list(map(
-                lambda x: x.coefficient,
-                list(filter(lambda x: x.exponent == _, mult_eq))
-            ))
+            coefficient = list(
+                map(
+                    lambda x: x.coefficient,
+                    list(filter(lambda x: x.exponent == _, mult_eq)),
+                )
+            )
 
             try:
                 coefficient = coefficient[0] ^ coefficient[1]
@@ -97,7 +108,7 @@ class Message(Polynomial):
 
     def create_message_polynomial(self, string: str) -> list[Term]:
         equation = []
-        split_string = [string[x:x+8] for x in range(0, len(string), 8)]
+        split_string = [string[x : x + 8] for x in range(0, len(string), 8)]
         poly_length = len(split_string)
         for power, val in enumerate(split_string):
             equation.append(Term(int(val, 2), poly_length - (power + 1)))

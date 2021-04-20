@@ -1,16 +1,14 @@
 from collections import namedtuple
+
 __all__ = ["filler", "correction_table", "remainder_bits"]
 
 
-ErrorCorrection = namedtuple('ErrorCorrection', [
-    'ec_codewords',
-    'blocks_group_1',
-    'dc_group_1',
-    'blocks_group_2',
-    'dc_group_2'
-])
+ErrorCorrection = namedtuple(
+    "ErrorCorrection",
+    ["ec_codewords", "blocks_group_1", "dc_group_1", "blocks_group_2", "dc_group_2"],
+)
 filler: str = "1110110000010001"
-correction_table: dict[str: ErrorCorrection] = {
+correction_table: dict[str:ErrorCorrection] = {
     "1-H": ErrorCorrection(17, 1, 9, 0, 0),
     "1-L": ErrorCorrection(7, 1, 19, 0, 0),
     "1-M": ErrorCorrection(10, 1, 16, 0, 0),
@@ -212,5 +210,5 @@ remainder_bits = {
     37: 0,
     38: 0,
     39: 0,
-    40: 0
+    40: 0,
 }
