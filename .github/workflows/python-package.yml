@@ -23,11 +23,11 @@ jobs:
 
       - name: Commit files if changed
         run: |
-          git diff
           git config --global user.email "action@github.com"
           git config --global user.name "Lint Clean Up"
-          git add .
-          git commit -m "Template cleanup"
+          git add -A
+          timestamp=$(date -u)
+          git commit -m "Template cleanup: ${timestamp}" || exit 0
           git push
 
   build:
