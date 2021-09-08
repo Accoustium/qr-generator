@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                pip3 --freeze
+                pip3 freeze
             }
         }
     }
