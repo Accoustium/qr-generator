@@ -7,7 +7,7 @@ GF = Galois()
 
 class Polynomial:
     def __init__(self):
-        self.equation: list[Term] = list()
+        self.equation: list = list()
 
     def __repr__(self) -> str:
         return f"Polynomial({' + '.join(map(str, self.equation))})"
@@ -41,7 +41,7 @@ class Polynomial:
 
             return new_poly
 
-    def __divide_equations(self, poly_1, poly_2):
+    def __divide_equations(self, poly_1, poly_2) -> list:
         mul_poly = Polynomial()
         mul_poly.equation = [
             Term(
@@ -68,9 +68,7 @@ class Polynomial:
         mul_poly.equation = mul_poly.equation[1:]
         return mul_poly
 
-    def __multiply_equations(
-        self, equation_1: list[Term], equation_2: list[Term]
-    ) -> list[Term]:
+    def __multiply_equations(self, equation_1, equation_2) -> list:
         mult_eq = list()
         for eq1 in equation_1:
             for eq2 in equation_2:
@@ -106,7 +104,7 @@ class Message(Polynomial):
     def __repr__(self) -> str:
         return f"PloyMessage({self})"
 
-    def create_message_polynomial(self, string: str) -> list[Term]:
+    def create_message_polynomial(self, string: str):
         equation = []
         split_string = [string[x : x + 8] for x in range(0, len(string), 8)]
         poly_length = len(split_string)
@@ -126,7 +124,7 @@ class Generator(Polynomial):
     def __repr__(self) -> str:
         return f"PolyGenerator({self})"
 
-    def create_generator_polynomial(self, words: int) -> list[Term]:
+    def create_generator_polynomial(self, words: int):
         if words in self.generator_from_words.keys():
             return self.generator_from_words[words]
 

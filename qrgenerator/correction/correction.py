@@ -58,7 +58,7 @@ class ErrorCorrection:
 
         return code_words.bin()
 
-    def __split_into_words(self, word_block: str) -> list[str]:
+    def __split_into_words(self, word_block: str):
         word = []
         for length in range(0, len(word_block), 8):
             word.append(word_block[length : length + 8])
@@ -67,7 +67,7 @@ class ErrorCorrection:
 
     def __create_blocks(
         self, encoding: str, correction_level: str, version_number: int
-    ) -> list[str]:
+    ) -> list:
         numbers = correction_table[f"{version_number}-{correction_level}"]
         blocks = list()
 
