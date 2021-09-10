@@ -15,7 +15,7 @@ class Alphanumeric(Encoding):
         )
 
     def __repr__(self):
-        return f"Alphanumeric(string={self.decoded_string}, error_correction={self.error_correction})"
+        return f'Alphanumeric(string="{self.decoded_string}", error_correction={self.error_correction})'
 
     def encode(self):
         encoding = list()

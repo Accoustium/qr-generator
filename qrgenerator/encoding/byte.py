@@ -15,7 +15,7 @@ class Byte(Encoding):
         )
 
     def __repr__(self):
-        return f"Byte(string={self.decoded_string}, error_correction={self.error_correction})"
+        return f'Byte(string="{self.decoded_string}", error_correction={self.error_correction})'
 
     def encode(self):
         encoding = [_.encode("utf-8").hex() for _ in self.decoded_string]

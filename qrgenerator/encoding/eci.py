@@ -8,10 +8,10 @@ class ECI(Encoding):
             decoded_string,
             correction,
             version,
-            formatting.eci.mode_indicator,
-            formatting.eci.character_count,
-            formatting.eci.capacities,
-            formatting.eci.terminator,
+            eci.mode_indicator,
+            eci.character_count,
+            eci.capacities,
+            eci.terminator,
         )
 
     def __repr__(self):
