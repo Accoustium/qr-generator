@@ -30,3 +30,13 @@ def test_numeric_repr(numeric_fixture):
 
 def test_numeric_string_encoding(numeric_fixture):
     assert str(numeric_fixture) == "000100000001111101100011100001001010010000000000"
+
+
+def test_encoding_for_number_2():
+    en = Numeric(76, 'L')
+    assert str(en) == '00010000000010100110000000000000'
+
+
+@pytest.mark.xfail(raises=ValueError)
+def test_numeric_fail_version_too_low():
+    num = Numeric(12345698751321658978531489, 'H', version=1)
