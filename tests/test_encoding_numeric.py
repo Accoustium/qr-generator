@@ -25,7 +25,7 @@ def test_numeric_word_encoding(numeric_fixture):
 
 
 def test_numeric_repr(numeric_fixture):
-    assert repr(numeric_fixture) == 'Numeric(number=8675309, error_correction=H)'
+    assert repr(numeric_fixture) == "Numeric(number=8675309, error_correction=H)"
 
 
 def test_numeric_string_encoding(numeric_fixture):
@@ -33,10 +33,10 @@ def test_numeric_string_encoding(numeric_fixture):
 
 
 def test_encoding_for_number_2():
-    en = Numeric(76, 'L')
-    assert str(en) == '00010000000010100110000000000000'
+    en = Numeric(76, "L")
+    assert str(en) == "00010000000010100110000000000000"
 
 
 @pytest.mark.xfail(raises=ValueError)
 def test_numeric_fail_version_too_low():
-    num = Numeric(12345698751321658978531489, 'H', version=1)
+    num = Numeric(12345698751321658978531489, "H", version=1)

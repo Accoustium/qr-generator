@@ -25,7 +25,7 @@ def test_kanji_word_encoding(kanji_fixture):
 
 
 def test_kanji_repr(kanji_fixture):
-    assert repr(kanji_fixture) == 'Kanji(decoded_string=茗荷,error_correction=H)'
+    assert repr(kanji_fixture) == "Kanji(decoded_string=茗荷,error_correction=H)"
 
 
 def test_kanji_string_encoding(kanji_fixture):

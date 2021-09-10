@@ -28,7 +28,9 @@ def test_alpha_word_encoding(alpha_fixture):
 
 
 def test_alpha_repr(alpha_fixture):
-    assert repr(alpha_fixture) == 'Alphanumeric(string="HELLO WORLD", error_correction=H)'
+    assert (
+        repr(alpha_fixture) == 'Alphanumeric(string="HELLO WORLD", error_correction=H)'
+    )
 
 
 def test_alpha_string_encoding(alpha_fixture):
