@@ -55,9 +55,12 @@ class Encoding:
         raise NotImplementedError("This function has not been implemented yet.")
 
     def find_version(self) -> int:
-        for k, v in self.capacities.items():
-            if self.character_length < v[self.error_correction]:
-                return k
+        if self.capacities:
+            for k, v in self.capacities.items():
+                if self.character_length < v[self.error_correction]:
+                    return k
+        else:
+            raise NotImplementedError("This function only works when capacities are included.")
 
     def validate_version(self, version_number: int) -> bool:
         return version_number >= self.find_version()
