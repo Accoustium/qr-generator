@@ -1,5 +1,5 @@
 [tool.pytest.ini_options]
-addopts = "-vvv --cov=qrgenerator"
+addopts = "-vvv --cov-report term-missing --cov=qrgenerator"
 required_plugins = ['pytest-cov>=2.12.1']
 log_file = 'logs/pytest-logs.txt'
 log_file_date_format = '%Y-%m-%d %H:%M:%S'
