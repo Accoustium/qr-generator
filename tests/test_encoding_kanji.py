@@ -30,3 +30,8 @@ def test_kanji_repr(kanji_fixture):
 
 def test_kanji_string_encoding(kanji_fixture):
     assert str(kanji_fixture) == "100000000010110101010101000110100101110000000000"
+
+
+def test_kanji_version_match():
+    kj = Kanji("茗荷", "H", version=1)
+    assert kj.version == 1
