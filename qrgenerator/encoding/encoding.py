@@ -60,7 +60,9 @@ class Encoding:
                 if self.character_length < v[self.error_correction]:
                     return k
         else:
-            raise NotImplementedError("This function only works when capacities are included.")
+            raise NotImplementedError(
+                "This function only works when capacities are included."
+            )
 
     def validate_version(self, version_number: int) -> bool:
         return version_number >= self.find_version()

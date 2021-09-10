@@ -19,7 +19,7 @@ class Numeric(Encoding):
 
     def encode(self):
         encoding = [
-            self.decoded_string[_: _ + 3]
+            self.decoded_string[_ : _ + 3]
             for _ in range(0, self.character_length + 1, 3)
         ]
 
